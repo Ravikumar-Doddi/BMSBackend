@@ -12,7 +12,6 @@ const movieRoutes = require("./routes/movieRouter");
 const theatreRoutes = require("./routes/theatreRoutes");
 const showRoutes = require("./routes/showRouter");
 const bookingRoutes = require("./routes/bookingRouter");
-const mongoSanitize = require("express-mongo-sanitize");
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per windowMs
@@ -32,7 +31,7 @@ app.use(
     },
   })
 );
-app.use(mongoSanitize());
+
 app.use("/api/", apiLimiter);
 app.use("/api/user", userRoutes);
 app.use("/api/movie", movieRoutes);
