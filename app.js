@@ -20,17 +20,17 @@ const apiLimiter = rateLimit({
 app.use(express.json());
 app.use(cors());
 app.use(helmet());
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],
-      imgSrc: ["'self'", "https://www.google-analytics.com"],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      connectSrc: ["'self'", "https://www.google-analytics.com"],
-    },
-  })
-);
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     directives: {
+//       defaultSrc: ["'self'"],
+//       imgSrc: ["'self'", "https://www.google-analytics.com"],
+//       scriptSrc: ["'self'", "'unsafe-inline'"],
+//       styleSrc: ["'self'", "'unsafe-inline'"],
+//       connectSrc: ["'self'", "https://www.google-analytics.com"],
+//     },
+//   })
+// );
 
 app.use("/api/", apiLimiter);
 app.use("/api/user", userRoutes);
